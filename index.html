@@ -1,0 +1,41 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expo Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen active">
+    <h1>Expo Quiz</h1>
+    <button id="start-btn">Start Quiz</button>
+  </div>
+
+  <!-- User Info Screen -->
+  <div id="user-form-screen" class="screen">
+    <h2>Enter Your Info</h2>
+    <form id="user-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <button type="submit">Start Quiz</button>
+    </form>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="quiz-screen" class="screen">
+    <h2>Real or Rendering?</h2>
+    <div id="progress-dots"></div>
+    <img id="quiz-image" src="" alt="Quiz Image" />
+    <div class="quiz-buttons">
+      <button class="answer-btn" data-answer="Rendering">Rendering</button>
+      <button class="answer-btn" data-answer="Real Image">Real Image</button>
+      <button class="answer-btn" data-answer="Don't Know">Don't Know</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
