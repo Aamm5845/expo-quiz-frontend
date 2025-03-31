@@ -12,6 +12,15 @@ body, html {
   overflow: hidden;
 }
 
+/* Section control */
+section {
+  display: none;
+}
+
+section.active {
+  display: flex;
+}
+
 /* === Start Screen === */
 #start-screen {
   position: relative;
@@ -66,10 +75,10 @@ body, html {
 #start-btn {
   font-size: 2.5rem;
   padding: 1.5rem 4rem;
-  background-color: rgba(0, 150, 136, 0.9); /* deep teal */
+  background-color: rgba(0, 150, 136, 0.9);
   color: white;
   border: none;
-  border-radius: 1000px; /* super rounded */
+  border-radius: 1000px;
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
@@ -94,17 +103,13 @@ body, html {
 
 /* === User Form === */
 #user-form-screen {
-  display: none;
-  height: 100vh;
   background-color: #f8f8f8;
   color: #333;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-#user-form-screen.active {
-  display: flex;
+  height: 100vh;
+  padding: 2rem;
 }
 
 #user-form {
@@ -115,6 +120,9 @@ body, html {
   max-width: 400px;
   width: 90%;
   text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #user-form h2 {
@@ -141,7 +149,6 @@ body, html {
 
 /* === Quiz Screen === */
 #quiz-screen {
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -149,10 +156,6 @@ body, html {
   background: #fff;
   text-align: center;
   padding: 2rem;
-}
-
-#quiz-screen.active {
-  display: flex;
 }
 
 #quiz-image {
