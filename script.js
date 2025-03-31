@@ -10,12 +10,12 @@ const answerButtons = document.querySelectorAll('.answer-btn');
 const resultScore = document.getElementById('result-score');
 
 const images = [
-  { src: 'images/img1.jpg', answer: 'Real Image' },
-  { src: 'images/img2.jpg', answer: 'Real Image' },
-  { src: 'images/img3.jpg', answer: 'Real Image' },
-  { src: 'images/img4.jpg', answer: 'Real Image' },
-  { src: 'images/img5.jpg', answer: 'Real Image' },
-  { src: 'images/img6.jpg', answer: 'Real Image' }
+  { src: 'images/mikvah.jpg', answer: 'Real Image' },
+  { src: 'images/room.jpg', answer: 'Real Image' },
+  { src: 'images/office.jpg', answer: 'Real Image' },
+  { src: 'images/livingroom.jpg', answer: 'Real Image' },
+  { src: 'images/kitchen.jpg', answer: 'Real Image' },
+  { src: 'images/bathroom.jpg', answer: 'Real Image' }
 ];
 
 let currentQuestion = 0;
