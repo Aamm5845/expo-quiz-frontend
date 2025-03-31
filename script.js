@@ -21,8 +21,20 @@ const questions = [
   { image: 'images/bathroom.jpg', correct: 'Real Image' }
 ];
 
+// ✅ Preload all images
+questions.forEach(q => {
+  const img = new Image();
+  img.src = q.image;
+});
+
 function showQuestion(index) {
-  quizImage.src = questions[index].image || '';
+  quizImage.src = questions[index].image;
+  answerButtons.forEach(btn => btn.disabled = true); // disable until loaded
+
+  quizImage.onload = () => {
+    answerButtons.forEach(btn => btn.disabled = false);
+  };
+
   updateProgressDots(index);
 }
 
@@ -40,12 +52,11 @@ function showResults() {
   quizScreen.innerHTML = `
     <h2>All images are real images of projects designed by Meisner Interiors.</h2>
     <p>You got ${correctAnswers} out of ${questions.length} correct.</p>
-    <p>Thank you for participating!</p>
     <button onclick="location.reload()">Restart Quiz</button>
   `;
 
-  // Submit to Google Sheets
-  fetch('https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec', {
+  // ✅ Send to Render backend (not Google directly)
+  fetch('https://expo-quiz-backend.onrender.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -56,14 +67,8 @@ function showResults() {
       answers: userAnswers
     })
   })
-    .then(res => {
-      console.log('✅ Submitted to Google Sheet');
-      return res.text();
-    })
-    .then(console.log)
-    .catch(err => {
-      console.error('❌ Failed to submit:', err);
-    });
+  .then(() => console.log('✅ Submitted to backend'))
+  .catch(err => console.error('❌ Failed to submit:', err));
 }
 
 startBtn.addEventListener('click', () => {
