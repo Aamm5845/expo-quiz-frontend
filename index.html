@@ -1,73 +1,310 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Expo Quiz</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* === Base === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Start Screen with Video Background -->
-  <section id="start-screen" class="active">
-    <video autoplay muted loop id="bg-video">
-      <source src="video/bg.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="overlay">
-      <h1 class="headline">Win a Free Design</h1>
-      <div class="arrows">
-        <span>▼ ▼ ▼</span>
-        <span>▼ ▼ ▼</span>
-      </div>
-      <button id="start-btn">START QUIZ</button>
-    </div>
-  </section>
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  overflow: hidden;
+}
 
-  <!-- User Info Form -->
-  <section id="user-form-screen">
-    <form id="user-form">
-      <h2>Enter Your Info</h2>
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <button type="submit">Continue</button>
-    </form>
-  </section>
+/* === Section Visibility === */
+section {
+  display: none;
+}
 
-  <!-- Quiz Section -->
-  <section id="quiz-screen">
-    <div class="quiz-heading">Rendering or Real?</div>
-    <img id="quiz-image" src="" alt="Design or Rendering?" />
-    <div class="buttons">
-      <button class="answer-btn" data-answer="Real Image">
-        <span class="answer-letter">A</span>
-        <span class="answer-text">REAL IMAGE</span>
-      </button>
-      <button class="answer-btn" data-answer="Rendering">
-        <span class="answer-letter">B</span>
-        <span class="answer-text">RENDERING</span>
-      </button>
-      <button class="answer-btn" data-answer="Don't Know">
-        <span class="answer-letter">C</span>
-        <span class="answer-text">DON'T KNOW</span>
-      </button>
-    </div>
-    <div id="progress-dots"></div>
-  </section>
+section.active {
+  display: flex;
+}
 
-  <!-- Results Screen -->
-  <section id="results-screen" class="results">
-    <video autoplay muted loop id="bg2-video">
-      <source src="video/bg2.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="confetti"></div>
-    <div class="result-header">Thanks for playing!</div>
-    <div class="result-score-button" id="result-score">You got 0 out of 6 correct.</div>
-    <div class="result-subtext">All the images you saw are real projects designed by Meisner Interiors.</div>
-    <button id="refresh-btn" onclick="location.reload()">⟳</button>
-  </section>
+/* === Start Screen === */
+#start-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.headline {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+}
+
+.arrows {
+  font-size: 2rem;
+  line-height: 1.4;
+  animation: blink 1.4s infinite;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#start-btn {
+  font-size: 2.5rem;
+  padding: 1.5rem 4rem;
+  background-color: rgba(0, 150, 136, 0.9);
+  color: white;
+  border: none;
+  border-radius: 1000px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: bouncePulse 2s infinite ease-in-out;
+}
+
+#start-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+#start-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bouncePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* === User Form === */
+#user-form-screen {
+  background-color: #f8f8f8;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2rem;
+}
+
+#user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#user-form h2 {
+  margin-bottom: 1rem;
+}
+
+#user-form input {
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#user-form button {
+  padding: 1rem;
+  background-color: teal;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* === Quiz Screen === */
+#quiz-screen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+}
+
+.quiz-heading {
+  background-color: #333;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  margin-bottom: -2rem;
+  z-index: 10;
+  position: relative;
+}
+
+#quiz-image {
+  max-width: 90%;
+  max-height: 55vh;
+  border-radius: 20px;
+  margin-bottom: -5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 6rem;
+  z-index: 2;
+}
+
+.answer-btn {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 6px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.answer-letter {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.answer-text {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.answer-btn[data-answer="Real Image"] {
+  background-color: #7AC943;
+}
+
+.answer-btn[data-answer="Rendering"] {
+  background-color: #00AEEF;
+}
+
+.answer-btn[data-answer="Don't Know"] {
+  background-color: #FBB034;
+}
+
+.answer-btn:hover {
+  transform: scale(1.05);
+}
+
+#progress-dots {
+  margin-top: 2rem;
+}
+
+/* === Results Screen === */
+#results-screen.results {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  position: relative;
+}
+
+#bg2-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.result-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.result-score-button {
+  background-color: #444;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  border: none;
+  font-weight: bold;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.result-subtext {
+  font-size: 1.2rem;
+  max-width: 600px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+#refresh-btn {
+  position: absolute;
+  bottom: 2rem;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
