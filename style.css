@@ -1,3 +1,4 @@
+/* === Base === */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +13,7 @@ body, html {
   overflow: hidden;
 }
 
-/* Section control */
+/* === Section Visibility === */
 section {
   display: none;
 }
@@ -44,14 +45,13 @@ section.active {
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* ✅ centers everything horizontally */
+  align-items: center;
   padding: 2rem;
   text-align: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .headline {
@@ -59,6 +59,7 @@ section.active {
   font-weight: 800;
   margin-bottom: 2rem;
   text-shadow: 0 0 10px #000;
+  color: #fff;
 }
 
 .arrows {
@@ -66,6 +67,7 @@ section.active {
   line-height: 1.4;
   animation: blink 1.4s infinite;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 @keyframes blink {
