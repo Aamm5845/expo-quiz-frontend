@@ -55,7 +55,7 @@ function showResults() {
     <button onclick="location.reload()">Restart Quiz</button>
   `;
 
-  // ✅ Send to Render backend (not Google directly)
+  // ✅ Submit to backend
   fetch('https://expo-quiz-backend.onrender.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -69,6 +69,11 @@ function showResults() {
   })
   .then(() => console.log('✅ Submitted to backend'))
   .catch(err => console.error('❌ Failed to submit:', err));
+
+  // ⏱ Auto-restart after 15 seconds
+  setTimeout(() => {
+    location.reload();
+  }, 15000);
 }
 
 startBtn.addEventListener('click', () => {
