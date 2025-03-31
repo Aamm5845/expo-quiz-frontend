@@ -154,19 +154,33 @@ section.active {
 #quiz-screen {
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
   background: #fff;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+}
+
+.quiz-heading {
+  background-color: #333;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  margin-bottom: -2rem;
+  z-index: 10;
+  position: relative;
 }
 
 #quiz-image {
   max-width: 90%;
   max-height: 55vh;
   border-radius: 20px;
-  margin-bottom: 2rem;
+  margin-bottom: -5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .buttons {
@@ -175,17 +189,18 @@ section.active {
   gap: 2rem;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 800px;
-  margin-top: 2rem;
+  max-width: 1000px;
+  margin-top: 6rem;
+  z-index: 2;
 }
 
 .answer-btn {
-  width: 160px;
-  height: 160px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  border: 5px solid white;
+  border: 6px solid white;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s;
@@ -194,6 +209,17 @@ section.active {
   justify-content: center;
   align-items: center;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.answer-letter {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.answer-text {
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 .answer-btn[data-answer="Real Image"] {

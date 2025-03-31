@@ -36,12 +36,21 @@
 
   <!-- Quiz Section -->
   <section id="quiz-screen">
-    <h2>Rendering or Real?</h2>
+    <div class="quiz-heading">Rendering or Real?</div>
     <img id="quiz-image" src="" alt="Design or Rendering?" />
     <div class="buttons">
-      <button class="answer-btn" data-answer="Real Image">A<br>REAL IMAGE</button>
-      <button class="answer-btn" data-answer="Rendering">B<br>RENDERING</button>
-      <button class="answer-btn" data-answer="Don't Know">C<br>DON'T KNOW</button>
+      <button class="answer-btn" data-answer="Real Image">
+        <span class="answer-letter">A</span>
+        <span class="answer-text">REAL IMAGE</span>
+      </button>
+      <button class="answer-btn" data-answer="Rendering">
+        <span class="answer-letter">B</span>
+        <span class="answer-text">RENDERING</span>
+      </button>
+      <button class="answer-btn" data-answer="Don't Know">
+        <span class="answer-letter">C</span>
+        <span class="answer-text">DON'T KNOW</span>
+      </button>
     </div>
     <div id="progress-dots"></div>
   </section>
