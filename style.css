@@ -241,3 +241,74 @@ section.active {
 #progress-dots {
   margin-top: 2rem;
 }
+
+/* === Results Screen === */
+#results-screen.results {
+  background: #111;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  position: relative;
+}
+
+.result-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.result-score-button {
+  background-color: #444;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  border: none;
+  font-weight: bold;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.result-subtext {
+  font-size: 1.2rem;
+  max-width: 600px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+#refresh-btn {
+  position: absolute;
+  bottom: 2rem;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/confetti.gif');
+  background-size: cover;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+}
