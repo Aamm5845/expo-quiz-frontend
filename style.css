@@ -63,22 +63,34 @@ body, html {
   50% { opacity: 0.3; }
 }
 
-#start-btn {
-  font-size: 1.8rem;
-  padding: 1rem 3rem;
+##start-btn {
+  font-size: 2.5rem;
+  padding: 1.2rem 4rem;
   background-color: rgba(0, 150, 136, 0.85); /* teal */
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 100px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  animation: pulse 2s infinite;
 }
 
 #start-btn:hover {
   background-color: rgba(0, 150, 136, 1);
   transform: scale(1.05);
+}
+
+#start-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
 /* === User Form === */
