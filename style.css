@@ -254,6 +254,16 @@ section.active {
   position: relative;
 }
 
+#bg2-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .result-header {
   font-size: 2.5rem;
   font-weight: 700;
