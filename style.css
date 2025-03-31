@@ -1,103 +1,179 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: sans-serif;
-  background: #f8f9fa;
+  padding: 0;
 }
 
-.screen {
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  overflow: hidden;
+}
+
+/* === Start Screen === */
+#start-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.headline {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #000;
+}
+
+.arrows {
+  font-size: 2rem;
+  line-height: 1.4;
+  animation: blink 1.4s infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#start-btn {
+  font-size: 1.8rem;
+  padding: 1rem 3rem;
+  background-color: rgba(0, 150, 136, 0.85); /* teal */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+#start-btn:hover {
+  background-color: rgba(0, 150, 136, 1);
+  transform: scale(1.05);
+}
+
+/* === User Form === */
+#user-form-screen {
   display: none;
   height: 100vh;
+  background-color: #f8f8f8;
+  color: #333;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  padding: 1rem;
 }
 
-.screen.active {
+#user-form-screen.active {
   display: flex;
 }
 
-h1, h2 {
-  margin-bottom: 1rem;
-}
-
-form {
+#user-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
 }
 
-input {
+#user-form h2 {
+  margin-bottom: 1rem;
+}
+
+#user-form input {
   padding: 1rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  width: 250px;
+  border-radius: 8px;
 }
 
-button {
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 12px;
-  background-color: #28a745;
+#user-form button {
+  padding: 1rem;
+  background-color: teal;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
 }
 
-button:hover {
-  opacity: 0.9;
+/* === Quiz Screen === */
+#quiz-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+#quiz-screen.active {
+  display: flex;
 }
 
 #quiz-image {
-  max-width: 90%;
-  max-height: 300px;
-  margin: 1rem 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 100%;
+  max-height: 50vh;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.quiz-buttons {
+.buttons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
 }
 
 .answer-btn {
-  width: 100%;
-  background-color: #6c757d;
-  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: #eee;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.answer-btn[data-answer="Rendering"] {
-  background-color: #ffc107;
-}
-
-.answer-btn[data-answer="Real Image"] {
-  background-color: #28a745;
-}
-
-.answer-btn[data-answer="Don't Know"] {
-  background-color: #dc3545;
+.answer-btn:hover {
+  background: #ddd;
 }
 
 #progress-dots {
-  margin-bottom: 1rem;
-}
-
-.dot {
-  height: 16px;
-  width: 16px;
-  margin: 0 4px;
-  background-color: #ccc;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot.active {
-  background-color: #28a745;
+  margin-top: 2rem;
 }

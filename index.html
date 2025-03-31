@@ -1,40 +1,49 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Expo Quiz</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Start Screen -->
-  <div id="start-screen" class="screen active">
-    <h1>Expo Quiz</h1>
-    <button id="start-btn">Start Quiz</button>
-  </div>
 
-  <!-- User Info Screen -->
-  <div id="user-form-screen" class="screen">
-    <h2>Enter Your Info</h2>
+  <!-- Start Screen with Video Background -->
+  <section id="start-screen" class="active">
+    <video autoplay muted loop id="bg-video">
+      <source src="video/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <h1 class="headline">Win a Free Design</h1>
+      <div class="arrows">
+        <span>▼ ▼ ▼</span>
+        <span>▼ ▼ ▼</span>
+      </div>
+      <button id="start-btn">START QUIZ</button>
+    </div>
+  </section>
+
+  <!-- User Info Form -->
+  <section id="user-form-screen">
     <form id="user-form">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="email" id="email" placeholder="Your Email" required />
-      <button type="submit">Start Quiz</button>
+      <h2>Enter Your Info</h2>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <button type="submit">Continue</button>
     </form>
-  </div>
+  </section>
 
-  <!-- Quiz Screen -->
-  <div id="quiz-screen" class="screen">
-    <h2>Real or Rendering?</h2>
-    <div id="progress-dots"></div>
-    <img id="quiz-image" src="" alt="Quiz Image" />
-    <div class="quiz-buttons">
-      <button class="answer-btn" data-answer="Rendering">Rendering</button>
+  <!-- Quiz Section -->
+  <section id="quiz-screen">
+    <img id="quiz-image" src="" alt="Design or Rendering?" />
+    <div class="buttons">
       <button class="answer-btn" data-answer="Real Image">Real Image</button>
+      <button class="answer-btn" data-answer="Rendering">Rendering</button>
       <button class="answer-btn" data-answer="Don't Know">Don't Know</button>
     </div>
-  </div>
+    <div id="progress-dots"></div>
+  </section>
 
   <script src="script.js"></script>
 </body>
