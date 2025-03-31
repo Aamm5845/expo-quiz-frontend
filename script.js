@@ -29,7 +29,7 @@ questions.forEach(q => {
 
 function showQuestion(index) {
   quizImage.src = questions[index].image;
-  answerButtons.forEach(btn => btn.disabled = true); // disable until loaded
+  answerButtons.forEach(btn => btn.disabled = true); // disable until image loads
 
   quizImage.onload = () => {
     answerButtons.forEach(btn => btn.disabled = false);
@@ -55,7 +55,7 @@ function showResults() {
     <button onclick="location.reload()">Restart Quiz</button>
   `;
 
-  // ✅ Submit to backend
+  // ✅ Send to backend
   fetch('https://expo-quiz-backend.onrender.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -67,13 +67,18 @@ function showResults() {
       answers: userAnswers
     })
   })
-  .then(() => console.log('✅ Submitted to backend'))
-  .catch(err => console.error('❌ Failed to submit:', err));
-
-  // ⏱ Auto-restart after 15 seconds
-  setTimeout(() => {
-    location.reload();
-  }, 15000);
+  .then(() => {
+    console.log('✅ Submitted to backend');
+    setTimeout(() => {
+      location.reload();
+    }, 7000); // Auto-restart after 7 seconds
+  })
+  .catch(err => {
+    console.error('❌ Failed to submit:', err);
+    setTimeout(() => {
+      location.reload();
+    }, 7000); // Still restart even if it fails
+  });
 }
 
 startBtn.addEventListener('click', () => {
