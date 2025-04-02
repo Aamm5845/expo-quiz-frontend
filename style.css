@@ -271,24 +271,21 @@ section.active {
 }
 
 .result-score-button {
-  background-color: #222;
-  color: #fff;
-  font-size: 2.4rem;
-  font-weight: bold;
-  padding: 1.5rem 3rem;
-  border-radius: 40px;
+  background-color: #444;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
   margin-bottom: 1.5rem;
   border: none;
+  font-weight: bold;
   animation: fadeIn 1.5s ease-in-out;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .result-subtext {
   font-size: 1.2rem;
   max-width: 600px;
   animation: fadeIn 2s ease-in-out;
-  color: #fff;
-  opacity: 0.95;
 }
 
 #refresh-btn {
