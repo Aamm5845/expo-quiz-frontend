@@ -10,7 +10,14 @@ const resultScore = document.getElementById('result-score');
 
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
-const images = ['images/mikvah.jpg', 'images/room.jpg', 'images/office.jpg', 'images/livingroom.jpg', 'images/kitchen.jpg', 'images/bathroom.jpg'];
+const images = [
+  'images/mikvah.jpg',
+  'images/room.jpg',
+  'images/office.jpg',
+  'images/livingroom.jpg',
+  'images/kitchen.jpg',
+  'images/bathroom.jpg'
+];
 
 let currentQuestion = 0;
 let userName = '';
@@ -51,10 +58,11 @@ function loadQuestion() {
 function showResults() {
   quizScreen.classList.remove('active');
   resultsScreen.classList.add('active');
-
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
-  resultScore.textContent = `You got ${correct} out of ${images.length} correct.`;
+  resultScore.innerHTML = `
+    You entered <strong>${correct}</strong> times in the Free Room Design Raffle!
+  `;
 
   const submission = {
     name: userName,
