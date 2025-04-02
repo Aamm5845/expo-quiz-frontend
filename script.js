@@ -51,18 +51,19 @@ function loadQuestion() {
 function showResults() {
   quizScreen.classList.remove('active');
   resultsScreen.classList.add('active');
+
   const correct = answers.filter(ans => ans === 'Real Image').length;
+
   resultScore.textContent = `You got ${correct} out of ${images.length} correct.`;
 
   const submission = {
     name: userName,
     email: userEmail,
-    answers: answers.join(', '),
     correct: correct,
-    timestamp: new Date().toISOString()
+    total: images.length,
+    answers: answers
   };
 
-  // Submit to Google Sheets
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -74,6 +75,5 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
-  // Auto restart after 7 seconds
   setTimeout(() => location.reload(), 7000);
 }
