@@ -58,6 +58,7 @@ function loadQuestion() {
 function showResults() {
   quizScreen.classList.remove('active');
   resultsScreen.classList.add('active');
+
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
   resultScore.innerHTML = `
@@ -83,5 +84,13 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
+  // Auto-restart quiz after 7 seconds
   setTimeout(() => location.reload(), 7000);
+}
+
+// ✅ Register service worker for PWA fullscreen support
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('✅ Service Worker registered'))
+    .catch(err => console.error('❌ SW registration error:', err));
 }
