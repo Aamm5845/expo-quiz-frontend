@@ -10,6 +10,7 @@
   <meta name="theme-color" content="#000000" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -20,10 +21,11 @@
       <h1 class="headline">
         Answer a Few Quick Questions<br />
         for a Chance to Win a Custom Room Design
-      </h1>      
+      </h1>
       <div class="arrows"></div>
       <button id="start-btn">START QUIZ</button>
     </div>
+    <button class="reset-bubble" onclick="location.reload()">⟳</button>
   </section>
 
   <!-- User Info Form -->
@@ -36,6 +38,7 @@
         <button type="submit" class="form-submit">Enter Quiz</button>
       </form>
     </div>
+    <button class="reset-bubble" onclick="location.reload()">⟳</button>
   </section>
 
   <!-- Quiz Screen -->
@@ -59,6 +62,7 @@
       </div>
       <div id="progress-dots"></div>
     </div>
+    <button class="reset-bubble" onclick="location.reload()">⟳</button>
   </section>
 
   <!-- Results Screen -->
@@ -72,8 +76,13 @@
       </div>
       <button id="refresh-btn" onclick="location.reload()">⟳</button>
     </div>
+    <button class="reset-bubble" onclick="location.reload()">⟳</button>
   </section>
 
   <script src="script.js"></script>
+
+  <!-- Reset Button (visible on all screens) -->
+  <button class="reset-bubble" onclick="location.reload()">⟳</button>
 </body>
 </html>
+
