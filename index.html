@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Expo Quiz</title>
+
+  <!-- App Appearance -->
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="images/icon-512.png" />
@@ -27,43 +29,33 @@
 
   <!-- User Info Form -->
   <section id="user-form-screen">
-    <video class="bg-shared" autoplay muted loop playsinline>
-      <source src="video/bg.mp4" type="video/mp4" />
-    </video>
-    <div class="overlay">
-      <form id="user-form">
-        <h2 class="form-title">Let’s Get Started</h2>
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-        <button type="submit" class="form-submit">Enter Quiz</button>
-      </form>
-    </div>
+    <form id="user-form">
+      <h2>Enter Your Info</h2>
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Begin</button>
+    </form>
   </section>
 
   <!-- Quiz Screen -->
   <section id="quiz-screen">
-    <video class="bg-shared" autoplay muted loop playsinline>
-      <source src="video/bg.mp4" type="video/mp4" />
-    </video>
-    <div class="overlay quiz-overlay">
-      <div class="quiz-heading">Rendering or Real?</div>
-      <img id="quiz-image" src="" alt="quiz" />
-      <div class="buttons">
-        <button class="answer-btn" data-answer="Rendering">
-          <div class="answer-letter">A</div>
-          <div class="answer-text">Rendering</div>
-        </button>
-        <button class="answer-btn" data-answer="Real Image">
-          <div class="answer-letter">B</div>
-          <div class="answer-text">Real Image</div>
-        </button>
-        <button class="answer-btn" data-answer="Don't Know">
-          <div class="answer-letter">C</div>
-          <div class="answer-text">Don’t Know</div>
-        </button>
-      </div>
-      <div id="progress-dots"></div>
+    <div class="quiz-heading">Rendering or Real?</div>
+    <img id="quiz-image" src="" alt="quiz" />
+    <div class="buttons">
+      <button class="answer-btn" data-answer="Rendering">
+        <div class="answer-letter">A</div>
+        <div class="answer-text">Rendering</div>
+      </button>
+      <button class="answer-btn" data-answer="Real Image">
+        <div class="answer-letter">B</div>
+        <div class="answer-text">Real Image</div>
+      </button>
+      <button class="answer-btn" data-answer="Don't Know">
+        <div class="answer-letter">C</div>
+        <div class="answer-text">Don't Know</div>
+      </button>
     </div>
+    <div id="progress-dots"></div>
   </section>
 
   <!-- Results Screen -->
