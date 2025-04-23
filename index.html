@@ -66,18 +66,18 @@
   </section>
 
   <!-- Results Screen -->
-  <section id="results-screen" class="results">
-    <div class="result-content">
-      <div class="result-score-button" id="result-score">
-        You entered X times in the Free Room Design Raffle!
-      </div>
-      <div class="result-subtext">
-        All the images you saw are real projects designed by Meisner Interiors.
-      </div>
-      <button id="refresh-btn" onclick="location.reload()">⟳</button>
+<<section id="results-screen" class="results">
+  <div class="overlay">
+    <img src="images/Meisner Interiors logo white.png" alt="Meisner Interiors Logo" class="logo" />
+    <h1 class="headline" id="result-correct">You got X correct answers</h1>
+    <p class="result-subtext">
+      All the images shown were real-life interiors designed by Meisner Interiors.
+    </p>
+    <div class="raffle-entry" id="result-score">
+      You’ve earned X entries in our giveaway!
     </div>
-    <button class="reset-bubble" onclick="location.reload()">⟳</button>
-  </section>
+  </div>
+</section>
 
   <script src="script.js"></script>
 

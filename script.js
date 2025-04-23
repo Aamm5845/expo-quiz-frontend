@@ -61,9 +61,8 @@ function showResults() {
 
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
-  resultScore.innerHTML = `
-    You entered <strong>${correct}</strong> times in the Free Room Design Raffle!
-  `;
+  resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
+document.getElementById("result-correct").innerText = `You got ${correct} correct answers`;
 
   const submission = {
     name: userName,
