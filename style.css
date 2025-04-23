@@ -5,22 +5,25 @@
   padding: 0;
 }
 
-body, html {
+html, body {
   width: 100%;
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* === Full Cover Background === */
+/* === Full Cover Background Fix === */
 section {
   display: none;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url("images/green-background.png");
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: #000;
   overflow: hidden;
