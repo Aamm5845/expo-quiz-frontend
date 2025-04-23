@@ -247,7 +247,7 @@ section.active {
   margin-top: 2rem;
 }
 
-/* === Results Screen === */
+/* === Results Screen (Updated Layout) === */
 #results-screen.results {
   flex-direction: column;
   justify-content: center;
@@ -258,41 +258,36 @@ section.active {
   position: relative;
 }
 
-.result-score-button {
-  background-color: #444;
+.result-title {
+  font-size: 2.5rem;
+  font-weight: 700;
   color: white;
-  font-size: 2rem;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  margin-bottom: 1.5rem;
-  border: none;
-  font-weight: bold;
-  animation: fadeIn 1.5s ease-in-out;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .result-subtext {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
   max-width: 600px;
-  animation: fadeIn 2s ease-in-out;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
-#refresh-btn {
-  position: absolute;
-  bottom: 2rem;
-  width: 80px;
-  height: 80px;
-  background-color: white;
-  color: #333;
-  border: none;
-  border-radius: 50%;
-  font-size: 2rem;
+.raffle-entry {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: white;
+  background-color: rgba(0, 150, 136, 0.9);
+  border: none;
+  border-radius: 50px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  animation: fadeIn 3s ease-in-out;
+  cursor: default;
 }
 
-/* === Refresh Bubble (Hidden Control) === */
+/* === Reset Bubble (Hidden Refresh) === */
 .reset-bubble {
   position: fixed;
   bottom: 20px;
@@ -323,7 +318,6 @@ section.active {
   border-radius: 6px;
   white-space: nowrap;
 }
-
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
