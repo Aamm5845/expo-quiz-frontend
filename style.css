@@ -12,16 +12,17 @@ body, html {
   overflow: hidden;
 }
 
-/* === Shared Background Image === */
+/* === Apply full visible background === */
 section {
   display: none;
   position: relative;
   width: 100%;
   height: 100vh;
   background-image: url("images/green-background.png");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-color: #ffffff;
   overflow: hidden;
 }
 
@@ -41,7 +42,7 @@ section.active {
   align-items: center;
   padding: 2rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.05); /* light transparent */
 }
 
 /* === Start Screen === */
