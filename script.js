@@ -35,7 +35,9 @@ startBtn.addEventListener('click', () => {
 
 userForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  userName = document.getElementById('name').value;
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+  userName = `${firstName} ${lastName}`;  // Combine them to store full name
   userEmail = document.getElementById('email').value;
 
   // Randomize 3 unique images from the pool
