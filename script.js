@@ -7,6 +7,8 @@ const resultsScreen = document.getElementById('results-screen');
 const quizImage = document.getElementById('quiz-image');
 const answerButtons = document.querySelectorAll('.answer-btn');
 const resultScore = document.getElementById('result-score');
+const progressBar = document.getElementById("progress-bar");
+const progressCounter = document.getElementById("progress-counter");
 
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
@@ -20,7 +22,6 @@ const allImages = [
 ];
 
 let images = []; // will hold 3 random ones
-
 
 let currentQuestion = 0;
 let userName = '';
@@ -57,14 +58,23 @@ answerButtons.forEach(btn => {
     }
   });
 });
+
 function shuffleArray(array) {
   return array
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 }
+
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
+
+  // Update the progress bar width
+  const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
+  progressBar.style.width = progressPercentage + "%";
+
+  // Update progress counter (1 of 3)
+  progressCounter.innerText = `Question ${currentQuestion + 1} of ${images.length}`;
 }
 
 function showResults() {
@@ -74,7 +84,7 @@ function showResults() {
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
   resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
-document.getElementById("result-correct").innerText = `You got ${correct} correct answers`;
+  document.getElementById("result-correct").innerText = `You got ${correct} correct answers`;
 
   const submission = {
     name: userName,
