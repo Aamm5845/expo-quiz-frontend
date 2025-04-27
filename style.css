@@ -21,8 +21,9 @@ section {
   height: 100%;
   background-image: url("images/green-background.png");
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
+  background-color: #000;
   overflow: hidden;
 }
 
@@ -68,6 +69,7 @@ section.active {
   animation: blink 1.4s infinite;
   margin-bottom: 1.5rem;
   color: white;
+  text-align: center;
 }
 
 .arrows::before {
@@ -217,23 +219,34 @@ section.active {
 
 .result-title {
   font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
 .result-subtext {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
   max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
 .raffle-entry {
-  background-color: teal;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  padding: 1.2rem 2rem;
+  font-size: 1.25rem;
   font-weight: bold;
+  color: white;
+  background-color: rgba(0, 150, 136, 0.9);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 
-/* === Reset Bubble === */
+/* === Reset Bubble (Hidden Refresh) === */
 .reset-bubble {
   position: fixed;
   bottom: 20px;
@@ -249,21 +262,35 @@ section.active {
   z-index: 1000;
 }
 
-/* === Portrait Mode Fix (Mobile) === */
-@media (orientation: portrait) {
+/* === Mobile and Tablet Responsive Design === */
+
+/* For mobile screens (max-width: 600px) */
+@media (max-width: 600px) {
   .headline {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem; /* Smaller font size for mobile */
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
   }
 
   #start-btn {
-    font-size: 2rem;
-    padding: 1rem 2.5rem;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+  }
+
+  .answer-btn {
+    width: 90%;
+    height: 70px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-heading {
+    font-size: 1.8rem;
   }
 
   #quiz-image {
-    max-width: 95%;
-    max-height: 40vh;
+    max-width: 90%;
+    height: auto;
   }
 
   .buttons {
@@ -271,14 +298,84 @@ section.active {
     gap: 1rem;
   }
 
+  #results-screen {
+    padding: 1.5rem;
+  }
+
+  .result-title {
+    font-size: 2rem;
+  }
+
+  .result-subtext {
+    font-size: 1rem;
+  }
+
+  .raffle-entry {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+
+  /* Reset button */
+  .reset-bubble {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* For tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .headline {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  #start-btn {
+    font-size: 2.2rem;
+    padding: 1.3rem 3.5rem;
+  }
+
   .answer-btn {
-    width: 140px;
-    height: 140px;
-    font-size: 0.9rem;
+    width: 180px;
+    height: 180px;
+    font-size: 1rem;
   }
 
   .quiz-heading {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  #quiz-image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .result-title {
+    font-size: 2.2rem;
+  }
+
+  .result-subtext {
+    font-size: 1.1rem;
+  }
+
+  .raffle-entry {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .reset-bubble {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
   }
 }
