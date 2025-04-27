@@ -10,7 +10,7 @@ const resultScore = document.getElementById('result-score');
 
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
-const images = [
+const allImages = [
   'images/mikvah.jpg',
   'images/room.jpg',
   'images/office.jpg',
@@ -18,6 +18,9 @@ const images = [
   'images/kitchen.jpg',
   'images/bathroom.jpg'
 ];
+
+let images = []; // will hold 3 random ones
+
 
 let currentQuestion = 0;
 let userName = '';
@@ -33,6 +36,10 @@ userForm.addEventListener('submit', (e) => {
   e.preventDefault();
   userName = document.getElementById('name').value;
   userEmail = document.getElementById('email').value;
+
+  // Randomize 3 unique images from the pool
+  images = shuffleArray(allImages).slice(0, 3);
+
   userFormScreen.classList.remove('active');
   quizScreen.classList.add('active');
   loadQuestion();
@@ -50,7 +57,12 @@ answerButtons.forEach(btn => {
     }
   });
 });
-
+function shuffleArray(array) {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
 }

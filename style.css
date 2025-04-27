@@ -166,6 +166,12 @@ section.active {
   padding: 2rem 1rem 1rem;
   position: relative;
 }
+.question-counter {
+  color: white;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  font-weight: 500;
+}
 
 .quiz-heading {
   background-color: #333;
