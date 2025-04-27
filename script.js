@@ -69,6 +69,13 @@ function shuffleArray(array) {
 
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
+
+  // Update the progress bar width
+  const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
+  document.getElementById("progress-bar").style.width = progressPercentage + "%";
+
+  // Update progress counter (1 of 3)
+  document.getElementById("progress-counter").innerText = `Question ${currentQuestion + 1} of ${images.length}`;
 }
 
 function showResults() {
@@ -76,7 +83,7 @@ function showResults() {
   resultsScreen.classList.add('active');
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
-  // Display personalized message and correct answers
+  // Personalized thanks message
   resultCorrect.innerHTML = `Thanks for playing, <strong>${firstName}</strong>!`;
   document.getElementById("result-correct").innerText = `You got ${correct} correct answers!`;
 
