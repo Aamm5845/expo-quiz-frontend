@@ -143,6 +143,7 @@ section.active {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+  margin-bottom: 1rem; /* add margin to the inputs */
 }
 
 #user-form button {
@@ -322,4 +323,121 @@ section.active {
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+/* === Mobile and Tablet Responsive Design === */
+
+/* For mobile screens (max-width: 600px) */
+@media (max-width: 600px) {
+  .headline {
+    font-size: 1.8rem; /* Smaller font size for mobile */
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+
+  #start-btn {
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+  }
+
+  .answer-btn {
+    width: 150px;
+    height: 150px;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .quiz-heading {
+    font-size: 1.8rem;
+  }
+
+  #quiz-image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #results-screen {
+    padding: 1.5rem;
+  }
+
+  .result-title {
+    font-size: 2rem;
+  }
+
+  .result-subtext {
+    font-size: 1rem;
+  }
+
+  .raffle-entry {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+
+  /* Reset button */
+  .reset-bubble {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* For tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .headline {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  #start-btn {
+    font-size: 2.2rem;
+    padding: 1.3rem 3.5rem;
+  }
+
+  .answer-btn {
+    width: 180px;
+    height: 180px;
+    font-size: 1rem;
+  }
+
+  .quiz-heading {
+    font-size: 2rem;
+  }
+
+  #quiz-image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .result-title {
+    font-size: 2.2rem;
+  }
+
+  .result-subtext {
+    font-size: 1.1rem;
+  }
+
+  .raffle-entry {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .reset-bubble {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
+  }
 }
