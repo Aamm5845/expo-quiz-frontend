@@ -166,12 +166,6 @@ section.active {
   padding: 2rem 1rem 1rem;
   position: relative;
 }
-.question-counter {
-  color: white;
-  font-size: 1.2rem;
-  margin: 1rem 0;
-  font-weight: 500;
-}
 
 .quiz-heading {
   background-color: #333;
@@ -252,21 +246,8 @@ section.active {
 #progress-dots {
   margin-top: 2rem;
 }
-.progress-container {
-  width: 100%;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin-bottom: 20px;
-}
 
-.progress-bar {
-  width: 0%;
-  height: 100%;
-  background-color: rgba(0, 150, 136, 1);
-  transition: width 0.3s ease-in-out;
-}
-
-/* === Results Screen Final Styling === */
+/* === Results Screen === */
 #results-screen.results {
   flex-direction: column;
   justify-content: center;
@@ -277,13 +258,12 @@ section.active {
   position: relative;
 }
 
-#result-correct {
+.result-title {
   font-size: 2.5rem;
   font-weight: 700;
-  line-height: 1.4;
+  color: white;
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #fff;
+  margin-bottom: 1rem;
 }
 
 .result-subtext {
@@ -306,6 +286,7 @@ section.active {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   cursor: default;
 }
+
 /* === Reset Bubble (Hidden Refresh) === */
 .reset-bubble {
   position: fixed;
