@@ -143,7 +143,7 @@ section.active {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin-bottom: 1rem; /* add margin to the inputs */
+  margin-bottom: 1rem;
 }
 
 #user-form button {
@@ -201,8 +201,8 @@ section.active {
 }
 
 .answer-btn {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   border: 6px solid white;
   color: white;
@@ -324,6 +324,7 @@ section.active {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
 /* === Mobile and Tablet Responsive Design === */
 
 /* For mobile screens (max-width: 600px) */
