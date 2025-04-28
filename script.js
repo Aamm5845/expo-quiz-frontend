@@ -8,12 +8,10 @@ const quizImage = document.getElementById('quiz-image');
 const answerButtons = document.querySelectorAll('.answer-btn');
 const resultScore = document.getElementById('result-score');
 const resultCorrect = document.getElementById('result-correct');
+const progressBar = document.getElementById("progress-bar");
+const progressCounter = document.getElementById("progress-counter");
 
-let currentQuestion = 0;
-let userName = '';
-let userEmail = '';
-let answers = [];
-let firstName = '';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
 const allImages = [
   'images/mikvah.jpg',
@@ -24,7 +22,12 @@ const allImages = [
   'images/bathroom.jpg'
 ];
 
-let images = []; // will hold 3 random ones
+let images = [];
+let currentQuestion = 0;
+let userName = '';
+let userEmail = '';
+let firstName = '';
+let answers = [];
 
 startBtn.addEventListener('click', () => {
   startScreen.classList.remove('active');
@@ -33,13 +36,12 @@ startBtn.addEventListener('click', () => {
 
 userForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const firstNameInput = document.getElementById('first-name').value;
-  const lastName = document.getElementById('last-name').value;
-  userName = `${firstNameInput} ${lastName}`;  // Combine them to store full name
-  firstName = firstNameInput;  // Store first name for results page
-  userEmail = document.getElementById('email').value;
+  const firstNameInput = document.getElementById('first-name').value.trim();
+  const lastNameInput = document.getElementById('last-name').value.trim();
+  userName = `${firstNameInput} ${lastNameInput}`;
+  firstName = firstNameInput;
+  userEmail = document.getElementById('email').value.trim();
 
-  // Randomize 3 unique images from the pool
   images = shuffleArray(allImages).slice(0, 3);
 
   userFormScreen.classList.remove('active');
@@ -69,25 +71,19 @@ function shuffleArray(array) {
 
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
-
-  // Update the progress bar width
+  
   const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
-  document.getElementById("progress-bar").style.width = progressPercentage + "%";
-
-  // Update progress counter (1 of 3)
-  document.getElementById("progress-counter").innerText = `Question ${currentQuestion + 1} of ${images.length}`;
+  progressBar.style.width = progressPercentage + "%";
+  progressCounter.innerText = `Question ${currentQuestion + 1} of ${images.length}`;
 }
 
 function showResults() {
   quizScreen.classList.remove('active');
   resultsScreen.classList.add('active');
+
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
-  // Personalized thanks message
-  resultCorrect.innerHTML = `Thanks for playing, <strong>${firstName}</strong>!`;
-  document.getElementById("result-correct").innerText = `You got ${correct} correct answers!`;
-
-  // Show the number of raffle entries earned
+  resultCorrect.innerHTML = `Thanks for playing, <strong>${firstName}</strong>!<br>You got ${correct} correct answers!`;
   resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
 
   const submission = {
@@ -109,13 +105,12 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
-  // Auto-restart quiz after 7 seconds
   setTimeout(() => location.reload(), 7000);
 }
 
-// ✅ Register service worker for PWA fullscreen support
+// Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => console.log('✅ Service Worker registered'))
-    .catch(err => console.error('❌ SW registration error:', err));
+    .catch((err) => console.error('❌ SW registration error:', err));
 }
