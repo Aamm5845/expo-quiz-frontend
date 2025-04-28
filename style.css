@@ -20,7 +20,10 @@ section {
   width: 100%;
   height: 100%;
   background-image: url("images/green-background.png");
-  background-size: cover;
+  background-size: contain;
+background-color: #000;
+background-repeat: no-repeat;
+background-position: center;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #000;
