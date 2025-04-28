@@ -1,133 +1,328 @@
-const startBtn = document.getElementById('start-btn');
-const userFormScreen = document.getElementById('user-form-screen');
-const startScreen = document.getElementById('start-screen');
-const userForm = document.getElementById('user-form');
-const quizScreen = document.getElementById('quiz-screen');
-const resultsScreen = document.getElementById('results-screen');
-const quizImage = document.getElementById('quiz-image');
-const answerButtons = document.querySelectorAll('.answer-btn');
-const resultScore = document.getElementById('result-score');
-const resultCorrect = document.getElementById('result-correct');
-const progressBar = document.getElementById("progress-bar");
-const progressCounter = document.getElementById("progress-counter");
-
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
-
-const allImages = [
-  'images/mikvah.jpg',
-  'images/room.jpg',
-  'images/office.jpg',
-  'images/livingroom.jpg',
-  'images/kitchen.jpg',
-  'images/bathroom.jpg'
-];
-
-let images = []; // This will hold 3 random images for the quiz
-
-let currentQuestion = 0;
-let userName = '';
-let userEmail = '';
-let firstName = '';
-let answers = [];
-
-// Start button click event (to show user form)
-startBtn.addEventListener('click', () => {
-  startScreen.classList.remove('active');
-  userFormScreen.classList.add('active');
-});
-
-// User form submission event
-userForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const firstNameInput = document.getElementById('first-name').value;
-  const lastName = document.getElementById('last-name').value;
-  userName = `${firstNameInput} ${lastName}`;  // Full name for submission
-  firstName = firstNameInput;  // First name for personalized result message
-  userEmail = document.getElementById('email').value;
-
-  // Randomize 3 unique images from the pool
-  images = shuffleArray(allImages).slice(0, 3);
-
-  userFormScreen.classList.remove('active');
-  quizScreen.classList.add('active');
-  loadQuestion();
-});
-
-// Button click event for each answer
-answerButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const answer = btn.getAttribute('data-answer');
-    answers.push(answer);
-    currentQuestion++;
-    if (currentQuestion < images.length) {
-      loadQuestion();
-    } else {
-      showResults();
-    }
-  });
-});
-
-// Function to shuffle the images array
-function shuffleArray(array) {
-  return array
-    .map(value => ({ value, sort: Math.random() }))  // Assign a random sort value to each element
-    .sort((a, b) => a.sort - b.sort)  // Sort by random value
-    .map(({ value }) => value);  // Get the sorted value (the image)
+/* === Base Reset === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-// Function to load the current question (image)
-function loadQuestion() {
-  quizImage.src = images[currentQuestion];
-
-  // Update the progress bar width
-  const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
-  progressBar.style.width = progressPercentage + "%";
-
-  // Update progress counter (e.g., "1 of 3")
-  progressCounter.innerText = `Question ${currentQuestion + 1} of ${images.length}`;
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  overflow: hidden;
 }
 
-// Function to show the results after quiz completion
-function showResults() {
-  quizScreen.classList.remove('active');
-  resultsScreen.classList.add('active');
-  const correct = answers.filter(ans => ans === 'Real Image').length;  // Count correct answers
-
-  // Personalized "Thanks for playing" message
-  resultCorrect.innerHTML = `Thanks for playing, <strong>${firstName}</strong>!`;
-  document.getElementById("result-correct").innerText = `You got ${correct} correct answers!`;
-
-  // Show the number of raffle entries earned
-  resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
-
-  // Prepare the submission object for Google Sheets
-  const submission = {
-    name: userName,
-    email: userEmail,
-    correct: correct,
-    total: images.length,
-    answers: answers
-  };
-
-  // Submit data to Google Sheets
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors', // Google Sheets needs to be set to allow this kind of fetch
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(submission)
-  })
-  .then(() => console.log('✅ Submitted to Google Sheets'))
-  .catch((err) => console.error('❌ Submission error:', err));
-
-  // Auto-restart quiz after 7 seconds
-  setTimeout(() => location.reload(), 7000);
+/* === Full Cover Background === */
+section {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/green-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+  overflow: hidden;
 }
 
-// ✅ Register service worker for PWA fullscreen support
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-    .then(() => console.log('✅ Service Worker registered'))
-    .catch(err => console.error('❌ SW registration error:', err));
+section.active {
+  display: flex;
+}
+
+/* === Overlay === */
+.overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* === Logo === */
+.logo {
+  width: 260px;
+  max-width: 90%;
+  margin-bottom: 1.5rem;
+}
+
+/* === Headline === */
+.headline {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  color: white;
+  text-shadow: 0 0 10px #000;
+  text-align: center;
+}
+
+/* === Arrows === */
+.arrows {
+  font-size: 2rem;
+  line-height: 1.4;
+  animation: blink 1.4s infinite;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.arrows::before {
+  content: "↓↓";
+  display: block;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* === Start Button === */
+#start-btn {
+  font-size: 2.4rem;
+  padding: 1.2rem 3rem;
+  background-color: rgba(0, 150, 136, 0.9);
+  color: white;
+  border: none;
+  border-radius: 1000px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: bouncePulse 2s infinite;
+}
+
+#start-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes bouncePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* === User Form === */
+#user-form-screen {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#user-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#user-form input, #user-form button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#user-form input {
+  border: 1px solid #ccc;
+}
+
+#user-form button {
+  background-color: teal;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* === Quiz Screen === */
+#quiz-screen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  text-align: center;
+}
+
+.quiz-heading {
+  background: #333;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+#progress-container {
+  width: 90%;
+  background: rgba(255,255,255,0.2);
+  height: 10px;
+  border-radius: 20px;
+  margin: 1rem auto;
+  overflow: hidden;
+  position: relative;
+}
+
+#progress-bar {
+  background-color: #00AEEF;
+  height: 10px;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.5s;
+}
+
+#progress-counter {
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+#quiz-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 2rem;
+}
+
+.answer-btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #666;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.answer-btn:hover {
+  transform: scale(1.05);
+}
+
+.answer-letter {
+  font-size: 3rem;
+}
+
+.answer-text {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Button colors */
+.answer-btn[data-answer="Real Image"] { background-color: #7AC943; }
+.answer-btn[data-answer="Rendering"] { background-color: #00AEEF; }
+.answer-btn[data-answer="Don't Know"] { background-color: #FFC107; }
+
+/* === Results Screen === */
+#results-screen.results {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.result-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.result-subtext {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.raffle-entry {
+  padding: 1rem 2rem;
+  background-color: rgba(0, 150, 136, 0.9);
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* === Reset Bubble === */
+.reset-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+/* === Responsive for Tablets and Mobile === */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2rem;
+  }
+  
+  #start-btn {
+    font-size: 2rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .answer-btn {
+    width: 150px;
+    height: 150px;
+    font-size: 0.9rem;
+  }
+
+  .result-title {
+    font-size: 2rem;
+  }
+
+  .raffle-entry {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .answer-btn {
+    width: 140px;
+    height: 140px;
+  }
 }
