@@ -11,16 +11,14 @@ html, body {
   font-family: 'Poppins', sans-serif;
   background-color: #000;
   overflow: hidden;
-  overscroll-behavior-y: none;
-  touch-action: manipulation;
 }
 
-/* === Full Background Section === */
+/* === Full Cover Background === */
 section {
   display: none;
   position: relative;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   background-image: url("images/green-background.png");
   background-size: cover;
   background-position: center;
@@ -114,7 +112,6 @@ section.active {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 #user-form {
@@ -126,8 +123,7 @@ section.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#user-form input,
-#user-form button {
+#user-form input, #user-form button {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -147,6 +143,7 @@ section.active {
   cursor: pointer;
 }
 
+/* === Name Row Custom Layout === */
 .name-row {
   display: flex;
   gap: 1rem;
@@ -160,24 +157,19 @@ section.active {
 
 /* === Quiz Screen === */
 #quiz-screen {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100dvh;
-  padding: 2vh 1rem;
+  padding: 1rem;
   text-align: center;
-  overflow-y: auto;
-  gap: 1vh;
 }
 
 .quiz-heading {
   background: #333;
   color: white;
-  padding: 0.8rem 2rem;
-  font-size: 1.8rem;
-  border-radius: 40px;
-  margin-top: 2vh;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border-radius: 50px;
   margin-bottom: 1rem;
 }
 
@@ -209,19 +201,19 @@ section.active {
   width: 90%;
   max-width: 600px;
   border-radius: 20px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .answer-btn {
@@ -254,6 +246,7 @@ section.active {
   font-size: 1rem;
 }
 
+/* Button colors */
 .answer-btn[data-answer="Real Image"] { background-color: #7AC943; }
 .answer-btn[data-answer="Rendering"] { background-color: #00AEEF; }
 .answer-btn[data-answer="Don't Know"] { background-color: #FFC107; }
@@ -266,8 +259,6 @@ section.active {
   text-align: center;
   color: white;
   padding: 2rem;
-  height: 100dvh;
-  overflow-y: auto;
 }
 
 .result-title {
@@ -307,12 +298,12 @@ section.active {
   z-index: 9999;
 }
 
-/* === Responsive Fixes === */
+/* === Responsive for Tablets and Mobile === */
 @media (max-width: 768px) {
   .headline {
     font-size: 2rem;
   }
-
+  
   #start-btn {
     font-size: 2rem;
     padding: 1rem 2.5rem;
