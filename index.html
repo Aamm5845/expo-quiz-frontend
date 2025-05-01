@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Expo Quiz</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
@@ -25,13 +25,16 @@
     <div class="overlay">
       <form id="user-form">
         <h2>Enter Your Info</h2>
+      
         <div class="name-row">
           <input type="text" id="first-name" placeholder="First Name" required />
           <input type="text" id="last-name" placeholder="Last Name" required />
         </div>
+      
         <input type="email" id="email" placeholder="Email" required />
+        
         <button type="submit">Begin Quiz</button>
-      </form>      
+      </form>         
     </div>
   </section>
 
