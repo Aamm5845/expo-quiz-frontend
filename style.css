@@ -20,7 +20,7 @@ section {
   width: 100%;
   height: 100%;
   background-image: url("images/green-background.png");
-  background-size: cover; /* ✅ Full screen no black bars */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #000;
@@ -124,15 +124,6 @@ section.active {
 }
 
 #user-form input, #user-form button {
-  .name-row {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-  }
-  
-  .name-row input {
-    flex: 1;
-  }  
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -150,6 +141,18 @@ section.active {
   border: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* === Name Row Custom Layout === */
+.name-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.name-row input {
+  flex: 1;
 }
 
 /* === Quiz Screen === */
@@ -319,19 +322,14 @@ section.active {
   .raffle-entry {
     font-size: 1.1rem;
   }
-}
 
-@media (max-width: 500px) {
-  .headline {
-    font-size: 1.8rem;
+  .name-row {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .logo {
-    width: 200px;
-  }
-
-  .answer-btn {
-    width: 140px;
-    height: 140px;
+  .name-row input {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
