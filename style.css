@@ -198,13 +198,14 @@ section.active {
   font-size: 1.1rem;
 }
 
-#quiz-image {
+##quiz-image {
   width: 90%;
-  max-width: 600px;
-  height: 280px; /* ✅ fixed height */
-  object-fit: cover;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 4 / 3; /* ✅ Forces consistent image space */
+  object-fit: contain; /* ✅ Prevents cropping */
   border-radius: 20px;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
