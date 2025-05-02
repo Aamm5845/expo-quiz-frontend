@@ -47,9 +47,6 @@ userForm.addEventListener('submit', (e) => {
   answers = [];
 
   userFormScreen.classList.remove('active');
-  setTimeout(() => {
-    document.getElementById('first-name').focus();
-  }, 300);  
   quizScreen.classList.add('active');
   loadQuestion();
 });
