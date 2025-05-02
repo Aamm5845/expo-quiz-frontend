@@ -259,26 +259,34 @@ section.active {
   align-items: center;
   text-align: center;
   color: white;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
-.result-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.result-subtext {
-  font-size: 1.1rem;
+#results-screen .logo {
+  max-width: 300px;
   margin-bottom: 2rem;
 }
 
+.result-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.result-subtext {
+  font-size: 1.6rem;
+  max-width: 800px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
 .raffle-entry {
-  padding: 1rem 2rem;
+  padding: 1.5rem 3rem;
   background-color: rgba(0, 150, 136, 0.9);
   color: white;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   border-radius: 50px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
