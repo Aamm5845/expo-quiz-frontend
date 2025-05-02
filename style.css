@@ -114,10 +114,6 @@ section.active {
   flex-direction: column;
 }
 
-#user-form input:focus {
-  scroll-margin-top: 100px;
-}
-
 #user-form {
   background: white;
   padding: 2rem;
