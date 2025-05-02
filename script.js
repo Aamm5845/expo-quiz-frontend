@@ -17,7 +17,8 @@ const allImages = [
   'images/dining-room1.jpg',
   'images/hallway1.jpg',
   'images/kitchen0.jpg',
-  'images/kitchn2.jpg',
+  'images/kitchen2.jpg',
+  'images/kitchen.jpg',
   'images/mikvah.jpg',
   'images/room1.jpg'
 ];
