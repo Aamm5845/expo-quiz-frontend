@@ -16,10 +16,10 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPE
 const allImages = [
   'images/mikvah.jpg',
   'images/room.jpg',
-  'images/office.jpg',
-  'images/livingroom.jpg',
-  'images/kitchen.jpg',
-  'images/bathroom.jpg'
+  'images/dining-room.jpg',
+  'images/hallway.jpg',
+  'images/kitchen1.jpg',
+  'images/kitchen.jpg'
 ];
 
 let images = [];
@@ -70,8 +70,11 @@ function shuffleArray(array) {
 }
 
 function loadQuestion() {
+  quizImage.classList.remove('fade-in');
+  void quizImage.offsetWidth; // restart animation
   quizImage.src = images[currentQuestion];
-  
+  quizImage.classList.add('fade-in');
+
   const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
   progressBar.style.width = progressPercentage + "%";
   progressCounter.innerText = `Question ${currentQuestion + 1} of ${images.length}`;
@@ -105,12 +108,13 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
-  setTimeout(() => location.reload(), 7000);
+  // Remove auto-restart for now to allow full display
+  // setTimeout(() => location.reload(), 7000);
 }
 
-// Service Worker
+// Register Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => console.log('✅ Service Worker registered'))
-    .catch((err) => console.error('❌ SW registration error:', err));
+    .catch(err => console.error('❌ SW registration error:', err));
 }
