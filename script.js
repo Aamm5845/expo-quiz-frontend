@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener('click', () => {
     startScreen.classList.remove('active');
     userFormScreen.classList.add('active');
+
     setTimeout(() => {
       document.getElementById('first-name').focus();
     }, 300);
@@ -40,8 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   userForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert("SUBMIT WORKS ✅");
-
     const firstName = document.getElementById('first-name').value.trim();
     const lastName = document.getElementById('last-name').value.trim();
     userName = `${firstName} ${lastName}`;
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(() => console.log('✅ Submitted to Google Sheets'))
     .catch((err) => console.error('❌ Submission error:', err));
 
-    setTimeout(() => location.reload(), 30000);
+    setTimeout(() => location.reload(), 30000); // Show results for 30 seconds
   }
 
   if ('serviceWorker' in navigator) {
