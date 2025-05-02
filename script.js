@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener('click', () => {
     startScreen.classList.remove('active');
     userFormScreen.classList.add('active');
-
     setTimeout(() => {
       document.getElementById('first-name').focus();
     }, 300);
@@ -81,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadQuestion() {
     quizImage.src = images[currentQuestion];
 
-    // Build progress dots
     progressDots.innerHTML = '';
     for (let i = 0; i < images.length; i++) {
       const dot = document.createElement('div');
@@ -119,11 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(() => console.log('✅ Submitted to Google Sheets'))
     .catch((err) => console.error('❌ Submission error:', err));
 
-    // Auto-restart after 30 seconds
     setTimeout(() => location.reload(), 30000);
   }
 
-  // ✅ Register service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
       .then(() => console.log('✅ Service Worker registered'))
