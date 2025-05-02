@@ -150,6 +150,17 @@ section.active {
   flex: 1;
 }
 
+/* === Prevent keyboard from blocking inputs === */
+#user-form-screen {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-padding-top: 150px;
+}
+
+#user-form input:focus {
+  scroll-margin-top: 150px;
+}
+
 /* === Quiz Screen === */
 #quiz-screen {
   flex-direction: column;
