@@ -160,8 +160,9 @@ section.active {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: center;
+  height: 100%;
 }
 
 .quiz-heading {
@@ -200,9 +201,10 @@ section.active {
 #quiz-image {
   width: 90%;
   max-width: 600px;
+  height: 280px; /* ✅ fixed height */
+  object-fit: cover;
   border-radius: 20px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
