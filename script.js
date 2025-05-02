@@ -14,12 +14,12 @@ const progressCounter = document.getElementById("progress-counter");
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
 const allImages = [
+  'images/dining-room1.jpg',
+  'images/hallway1.jpg',
+  'images/kitchen0.jpg',
+  'images/kitchn2.jpg',
   'images/mikvah.jpg',
-  'images/room.jpg',
-  'images/dining-room.jpg',
-  'images/hallway.jpg',
-  'images/kitchen1.jpg',
-  'images/kitchen.jpg'
+  'images/room1.jpg'
 ];
 
 let images = [];
@@ -108,8 +108,8 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
-  // Remove auto-restart for now to allow full display
-  // setTimeout(() => location.reload(), 7000);
+  setTimeout(() => location.reload(), 7000);
+
 }
 
 // Register Service Worker

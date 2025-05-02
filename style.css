@@ -200,25 +200,27 @@ section.active {
 
 /* === Image Wrapper (scaled correctly) === */
 .image-wrapper {
-  width: 90%;
-  max-width: 700px;
-  aspect-ratio: 780 / 569.2; /* same as 7.8x5.692 inches */
-  margin: 2rem auto 1.5rem;
+  width: 95%;
+  max-width: 720px;
+  height: auto;
+  aspect-ratio: 780 / 569.2;
+  margin: 2rem auto 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
 }
 
 #quiz-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* show full image but stretch slightly */
   display: block;
+  border-radius: 20px;
 }
+
 
 /* === Answer Buttons === */
 .buttons {
