@@ -74,15 +74,17 @@ function shuffleArray(array) {
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
 
-  // Progress dots
-  progressDots.innerHTML = '';
+  const dotsContainer = document.getElementById("progress-dots");
+  if (!dotsContainer) return;
+
+  dotsContainer.innerHTML = '';
   for (let i = 0; i < images.length; i++) {
     const dot = document.createElement('div');
     dot.className = 'progress-dot';
     if (i === currentQuestion) {
       dot.classList.add('active');
     }
-    progressDots.appendChild(dot);
+    dotsContainer.appendChild(dot);
   }
 }
 
