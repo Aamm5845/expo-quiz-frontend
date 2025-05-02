@@ -51,6 +51,7 @@ section.active {
   width: 260px;
   max-width: 90%;
   margin-bottom: 1.5rem;
+  display: block;
 }
 
 /* === Headline === */
@@ -143,7 +144,6 @@ section.active {
   cursor: pointer;
 }
 
-/* === Name Row Custom Layout === */
 .name-row {
   display: flex;
   gap: 1rem;
@@ -198,17 +198,29 @@ section.active {
   font-size: 1.1rem;
 }
 
-##quiz-image {
+/* === Image Wrapper (scaled correctly) === */
+.image-wrapper {
   width: 90%;
   max-width: 700px;
-  height: auto;
-  aspect-ratio: 4 / 3; /* ✅ Forces consistent image space */
-  object-fit: contain; /* ✅ Prevents cropping */
+  aspect-ratio: 780 / 569.2; /* same as 7.8x5.692 inches */
+  margin: 2rem auto 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-  margin: 2rem 0 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
+#quiz-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* === Answer Buttons === */
 .buttons {
   display: flex;
   justify-content: center;
@@ -216,7 +228,7 @@ section.active {
   flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .answer-btn {
@@ -301,12 +313,12 @@ section.active {
   z-index: 9999;
 }
 
-/* === Responsive for Tablets and Mobile === */
+/* === Responsive === */
 @media (max-width: 768px) {
   .headline {
     font-size: 2rem;
   }
-  
+
   #start-btn {
     font-size: 2rem;
     padding: 1rem 2.5rem;
