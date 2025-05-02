@@ -1,3 +1,6 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // ALL your JS goes inside here
+});
 const startBtn = document.getElementById('start-btn');
 const userFormScreen = document.getElementById('user-form-screen');
 const startScreen = document.getElementById('start-screen');
@@ -143,3 +146,5 @@ window.addEventListener('DOMContentLoaded', () => {
     container.appendChild(img);
   }
 });
+
+console.log("SUBMIT WORKED");
