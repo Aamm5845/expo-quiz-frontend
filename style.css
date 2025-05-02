@@ -105,9 +105,17 @@ section.active {
 
 /* === User Form === */
 #user-form-screen {
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  padding: 2rem 1rem;
   flex-direction: column;
+}
+
+#user-form input:focus {
+  scroll-margin-top: 100px;
 }
 
 #user-form {
