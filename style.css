@@ -13,7 +13,7 @@ html, body {
   overflow: hidden;
 }
 
-/* === Full Cover Background === */
+/* === Section === */
 section {
   display: none;
   position: relative;
@@ -33,7 +33,6 @@ section.active {
 
 /* === Overlay === */
 .overlay {
-  position: relative;
   z-index: 1;
   height: 100%;
   width: 100%;
@@ -51,7 +50,6 @@ section.active {
   width: 260px;
   max-width: 90%;
   margin-bottom: 1.5rem;
-  display: block;
 }
 
 /* === Headline === */
@@ -68,16 +66,13 @@ section.active {
 /* === Arrows === */
 .arrows {
   font-size: 2rem;
-  line-height: 1.4;
   animation: blink 1.4s infinite;
   margin-bottom: 1.5rem;
   color: white;
-  text-align: center;
 }
 
 .arrows::before {
   content: "↓↓";
-  display: block;
 }
 
 @keyframes blink {
@@ -95,8 +90,8 @@ section.active {
   border-radius: 1000px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: bouncePulse 2s infinite;
+  transition: transform 0.2s ease;
 }
 
 #start-btn:hover {
@@ -165,6 +160,7 @@ section.active {
   height: 100%;
 }
 
+/* Heading */
 .quiz-heading {
   background: #333;
   color: white;
@@ -174,37 +170,32 @@ section.active {
   margin-bottom: 1rem;
 }
 
-#progress-container {
-  width: 90%;
-  background: rgba(255,255,255,0.2);
-  height: 10px;
-  border-radius: 20px;
-  margin: 1rem auto;
-  overflow: hidden;
-  position: relative;
+/* Dots */
+#progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0.5rem auto -0.5rem auto;
 }
 
-#progress-bar {
-  background-color: #00AEEF;
-  height: 10px;
-  width: 0%;
-  border-radius: 20px;
-  transition: width 0.5s;
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
-#progress-counter {
-  color: white;
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
+.progress-dot.active {
+  background-color: white;
 }
 
-/* === Image Wrapper (scaled correctly) === */
+/* Image */
 .image-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
+  margin-top: -0.5rem;
 }
 
 #quiz-image {
@@ -217,15 +208,14 @@ section.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* === Answer Buttons === */
+/* Buttons */
 .buttons {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 800px;
-  margin-top: 1rem;
+  margin-top: -2rem;
+  z-index: 1;
 }
 
 .answer-btn {
@@ -258,7 +248,6 @@ section.active {
   font-size: 1rem;
 }
 
-/* Button colors */
 .answer-btn[data-answer="Real Image"] { background-color: #7AC943; }
 .answer-btn[data-answer="Rendering"] { background-color: #00AEEF; }
 .answer-btn[data-answer="Don't Know"] { background-color: #FFC107; }

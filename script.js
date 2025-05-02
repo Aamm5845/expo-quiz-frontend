@@ -8,8 +8,7 @@ const quizImage = document.getElementById('quiz-image');
 const answerButtons = document.querySelectorAll('.answer-btn');
 const resultScore = document.getElementById('result-score');
 const resultCorrect = document.getElementById('result-correct');
-const progressBar = document.getElementById("progress-bar");
-const progressCounter = document.getElementById("progress-counter");
+const progressDots = document.getElementById("progress-dots");
 
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOTLbmRENYKwfIXGwkPEzQ24PKqjA6uXZlcccUkw92wn6PID0S8NrKczfc2mQi72I6/exec';
 
@@ -26,8 +25,8 @@ const allImages = [
 let images = [];
 let currentQuestion = 0;
 let userName = '';
+let firstNameOnly = '';
 let userEmail = '';
-let firstName = '';
 let answers = [];
 
 startBtn.addEventListener('click', () => {
@@ -37,13 +36,15 @@ startBtn.addEventListener('click', () => {
 
 userForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const firstNameInput = document.getElementById('first-name').value.trim();
-  const lastNameInput = document.getElementById('last-name').value.trim();
-  userName = `${firstNameInput} ${lastNameInput}`;
-  firstName = firstNameInput;
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName = document.getElementById('last-name').value.trim();
+  userName = `${firstName} ${lastName}`;
+  firstNameOnly = firstName;
   userEmail = document.getElementById('email').value.trim();
 
   images = shuffleArray(allImages).slice(0, 3);
+  currentQuestion = 0;
+  answers = [];
 
   userFormScreen.classList.remove('active');
   quizScreen.classList.add('active');
@@ -71,14 +72,18 @@ function shuffleArray(array) {
 }
 
 function loadQuestion() {
-  quizImage.classList.remove('fade-in');
-  void quizImage.offsetWidth; // restart animation
   quizImage.src = images[currentQuestion];
-  quizImage.classList.add('fade-in');
 
-  const progressPercentage = ((currentQuestion + 1) / images.length) * 100;
-  progressBar.style.width = progressPercentage + "%";
-  progressCounter.innerText = `Question ${currentQuestion + 1} of ${images.length}`;
+  // Progress dots
+  progressDots.innerHTML = '';
+  for (let i = 0; i < images.length; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'progress-dot';
+    if (i === currentQuestion) {
+      dot.classList.add('active');
+    }
+    progressDots.appendChild(dot);
+  }
 }
 
 function showResults() {
@@ -87,7 +92,7 @@ function showResults() {
 
   const correct = answers.filter(ans => ans === 'Real Image').length;
 
-  resultCorrect.innerHTML = `Thanks for playing, <strong>${firstName}</strong>!<br>You got ${correct} correct answers!`;
+  resultCorrect.innerText = `Thanks for playing, ${firstNameOnly}!`;
   resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
 
   const submission = {
@@ -101,19 +106,16 @@ function showResults() {
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(submission)
   })
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
   setTimeout(() => location.reload(), 7000);
-
 }
 
-// Register Service Worker
+// ✅ Register service worker for fullscreen installable app
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => console.log('✅ Service Worker registered'))
