@@ -13,6 +13,7 @@ html, body {
   overflow: hidden;
 }
 
+/* === Section === */
 section {
   display: none;
   position: relative;
@@ -104,13 +105,9 @@ section.active {
 
 /* === User Form === */
 #user-form-screen {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  height: 100vh;
-  overflow-y: auto;
+  flex-direction: column;
 }
 
 #user-form {
@@ -122,8 +119,7 @@ section.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#user-form input,
-#user-form button {
+#user-form input, #user-form button {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -133,10 +129,6 @@ section.active {
 
 #user-form input {
   border: 1px solid #ccc;
-}
-
-#user-form input:focus {
-  scroll-margin-top: 100px;
 }
 
 #user-form button {
@@ -168,6 +160,7 @@ section.active {
   height: 100%;
 }
 
+/* Heading */
 .quiz-heading {
   background: #333;
   color: white;
@@ -177,7 +170,7 @@ section.active {
   margin-bottom: 1rem;
 }
 
-/* Progress dots */
+/* Dots */
 #progress-dots {
   display: flex;
   justify-content: center;
@@ -288,30 +281,6 @@ section.active {
   font-size: 1.3rem;
   border-radius: 50px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* === Animated Selection Overlay === */
-#selection-overlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  z-index: 10000;
-  display: none;
-  animation: fadePop 1.4s ease-out;
-}
-
-@keyframes fadePop {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
-  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-  80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
 }
 
 /* === Reset Bubble === */
