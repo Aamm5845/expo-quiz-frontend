@@ -246,6 +246,12 @@ section.active {
   transition: transform 0.3s;
 }
 
+.answer-btn:active {
+  transform: scale(1.12);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transition: transform 0.1s ease;
+}
+
 .answer-btn:hover {
   transform: scale(1.05);
 }
