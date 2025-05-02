@@ -1,6 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ALL your JS goes inside here
-});
 const startBtn = document.getElementById('start-btn');
 const userFormScreen = document.getElementById('user-form-screen');
 const startScreen = document.getElementById('start-screen');
@@ -77,17 +74,15 @@ function shuffleArray(array) {
 function loadQuestion() {
   quizImage.src = images[currentQuestion];
 
-  const dotsContainer = document.getElementById("progress-dots");
-  if (!dotsContainer) return;
-
-  dotsContainer.innerHTML = '';
+  // Progress dots
+  progressDots.innerHTML = '';
   for (let i = 0; i < images.length; i++) {
     const dot = document.createElement('div');
     dot.className = 'progress-dot';
     if (i === currentQuestion) {
       dot.classList.add('active');
     }
-    dotsContainer.appendChild(dot);
+    progressDots.appendChild(dot);
   }
 }
 
@@ -126,25 +121,3 @@ if ('serviceWorker' in navigator) {
     .then(() => console.log('✅ Service Worker registered'))
     .catch(err => console.error('❌ SW registration error:', err));
 }
-window.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.floating-images');
-  const floatImages = [
-    'images/kitchen0.jpg',
-    'images/mikvah.jpg',
-    'images/room1.jpg',
-    'images/hallway1.jpg',
-    'images/kitchen2.jpg'
-  ];
-
-  for (let i = 0; i < 5; i++) {
-    const img = document.createElement('img');
-    img.src = floatImages[Math.floor(Math.random() * floatImages.length)];
-    img.classList.add('floating-image');
-    img.style.top = `${Math.random() * 80 + 5}%`;
-    img.style.left = `${Math.random() * 90 + 5}%`;
-    img.style.animationDelay = `${Math.random() * 8}s`;
-    container.appendChild(img);
-  }
-});
-
-console.log("SUBMIT WORKED");
