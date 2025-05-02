@@ -112,7 +112,7 @@ function showResults() {
   .then(() => console.log('✅ Submitted to Google Sheets'))
   .catch((err) => console.error('❌ Submission error:', err));
 
-  setTimeout(() => location.reload(), 7000);
+  setTimeout(() => location.reload(), 30000); // 30 seconds
 }
 
 // ✅ Register service worker for fullscreen installable app
