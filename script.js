@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const correct = answers.filter(ans => ans === 'Real Image').length;
 
     resultCorrect.innerText = `Thanks for playing, ${firstNameOnly}!`;
+  document.getElementById("result-count").innerText = `You had ${correct} correct answers.`;
     resultScore.innerText = `You’ve earned ${correct} entries in our giveaway!`;
 
     const submission = {
