@@ -325,6 +325,12 @@ section.active {
   .result-title {
     font-size: 2rem;
   }
+  .result-correct-count {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: 500;
+  }  
 
   .raffle-entry {
     font-size: 1.1rem;
